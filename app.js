@@ -10,6 +10,8 @@ dotenv.config({ path: "./config/config.env" });
 
 connectDB();
 
+const app = express();
+
 // Logging
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
@@ -18,8 +20,6 @@ if (process.env.NODE_ENV === "development") {
 // Handlebars
 app.engine(".hbs", exphbs({ defaultLayout: "main", extname: ".hbs" }));
 app.set("view engine", ".hbs");
-
-const app = express();
 
 const PORT = process.env.PORT || 6000;
 
