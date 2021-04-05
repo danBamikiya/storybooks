@@ -11,7 +11,28 @@ module.exports = (passport) => {
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         callbackURL: "/auth/google/callback",
       },
-      async (accessToken, refreshToken, profile, done) => console.log(profile)
+      async (accessToken, refreshToken, profile, done) => {
+        try {
+          let user = await User.findOne({ googleId: profile.id });
+
+          if (user) {
+            done(null, user);
+          } else {
+            const newUser = {
+              googleId: profile.id,
+              displayName: profile.displayName,
+              firstName: profile.name.givenName,
+              lastName: profile.name.familyName,
+              image: profile.photos[0].value,
+            };
+
+            user = await User.create(newUser);
+            done(null, user);
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      }
     )
   );
 
