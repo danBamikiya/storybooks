@@ -1,4 +1,5 @@
 {
-	"semicolons": true,
-	"singleQuote": false
+  "semicolons": true,
+  "singleQuote": false,
+  "trailingComma": "none"
 }
