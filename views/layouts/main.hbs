@@ -19,8 +19,17 @@
     <div class="container">{{{body}}}</div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.16.0/ckeditor.js"
+        integrity="sha512-7My1gsUz5JUQgT8+P0sHKaPel/77X3zjGZsXbTS8Y7MhDEJ+f9xg9H+pPzONFL5djye0zWLlxFLApGsWQ1gdfA=="
+        crossorigin="anonymous"></script>
+
     <script>
         M.Sidenav.init(document.querySelector(".sidenav"))
+        M.FormSelect.init(document.querySelector("#status"))
+
+        CKEDITOR.replace("body", {
+            plugins: "wysiwygarea, toolbar, basicstyles, link"
+        })
     </script>
 </body>
 
