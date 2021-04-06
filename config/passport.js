@@ -9,7 +9,7 @@ module.exports = (passport) => {
       {
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: "/auth/google/callback",
+        callbackURL: "/auth/google/callback"
       },
       async (accessToken, refreshToken, profile, done) => {
         try {
@@ -23,7 +23,7 @@ module.exports = (passport) => {
               displayName: profile.displayName,
               firstName: profile.name.givenName,
               lastName: profile.name.familyName,
-              image: profile.photos[0].value,
+              image: profile.photos[0].value
             };
 
             user = await User.create(newUser);
