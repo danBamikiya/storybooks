@@ -17,7 +17,7 @@ const UserSchema = new mongoose.Schema({
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: true
+    ref: "User"
   },
   createdAt: {
     type: Date,
