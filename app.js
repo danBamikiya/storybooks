@@ -14,7 +14,7 @@ const connectDB = require("./config/db");
 dotenv.config({ path: "./config/config.env" });
 
 // Handlebars Helpers
-const { formatDate } = require("./helpers/hbs");
+const { formatDate, stripTags, truncate } = require("./helpers/hbs");
 
 // Load passport
 require("./config/passport")(passport);
@@ -35,7 +35,11 @@ if (process.env.NODE_ENV === "development") {
 // Handlebars
 app.engine(
   ".hbs",
-  exphbs({ helpers: { formatDate }, defaultLayout: "main", extname: ".hbs" })
+  exphbs({
+    helpers: { formatDate, stripTags, truncate },
+    defaultLayout: "main",
+    extname: ".hbs"
+  })
 );
 app.set("view engine", ".hbs");
 
