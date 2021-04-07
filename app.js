@@ -57,6 +57,12 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Set user as a global var for use as loggedUser in index.hbs
+app.use((req, res, next) => {
+  res.locals.user = req.user || null;
+  next();
+});
+
 // Static folder
 app.use(express.static(path.join(__dirname, "public")));
 
