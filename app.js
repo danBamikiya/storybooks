@@ -36,7 +36,7 @@ if (process.env.NODE_ENV === "development") {
 app.engine(
   ".hbs",
   exphbs({
-    helpers: { formatDate, stripTags, truncate, editIcon },
+    helpers: { formatDate, stripTags, truncate, editIcon, select },
     defaultLayout: "main",
     extname: ".hbs"
   })
