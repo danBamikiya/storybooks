@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  api-server:
+    build: .
+    env_file: ./config/config.env.development
+    ports:
+      - "7070:7070"
+    networks:
+      - storybooks-app
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:3.6-xenial
+    environment:
+      - MONGO_INITDB_DATABASE=storybooks
+    ports:
+      - "27017:27017"
+    networks:
+      - storybooks-app
+    volumes:
+      - mongo-data:/data/db
+
+networks:
+  storybooks-app:
+    driver: bridge
+volumes:
+  mongo-data:
+    driver: local
