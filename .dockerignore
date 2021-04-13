@@ -1,0 +1,4 @@
+node_modules
+*key.json
+*.tfstate
+config/config.env.*
