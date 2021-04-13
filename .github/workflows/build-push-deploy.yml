@@ -1,0 +1,67 @@
+name: CI to Build and Deploy to Heroku
+
+on:
+  push:
+    # branches:
+    #   - master
+    tags:
+      - v\d+\.\d+\d+
+
+env:
+  PROJECT_ID: storiesswipe
+
+jobs:
+  setup-build-publish-deploy:
+    name: Setup, Build, Publish and Deploy
+    runs-on: ubuntu-latest
+    env:
+      REGISTRY_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      HEROKU_TOKEN: ${{ secrets.HEROKU_TOKEN }}
+
+    steps:
+      - name: Set ENV
+        run: |-
+          if  [ ${GITHUB_REF##*/} = "master"];  then
+            echo  "ENV=staging" >>  $GITHUB_ENV
+          else
+            echo  "ENV=prod"  >>  $GITHUB_ENV
+          fi
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      ### Push to multi-registries
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: $REGISTRY_USERNAME
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Login to Heroku Registry
+        uses: docker/login-action@v1
+        with:
+          registry: registry.heroku.com
+          username: $REGISTRY_USERNAME
+          password: $HEROKU_TOKEN
+
+      - name: Setup gcloud CLI
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          project_id: ${{ env.PROJECT_ID}}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          export_default_credentials: true
+
+      # Build the Docker image
+      - name: Build
+        run: |-
+          make build
+
+      # Push the Docker image to DockerHub
+      - name: Publish
+        run: |-
+          make push
+
+      - name: Deploy
+        run: |-
+          make deploy DOCKERHUB_USERNAME=$REGISTRY_USERNAME OAUTH_CLIENT_ID=${{ secrets.OAUTH_CLIENT_ID }}
