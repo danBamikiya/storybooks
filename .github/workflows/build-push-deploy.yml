@@ -64,4 +64,4 @@ jobs:
 
       - name: Deploy
         run: |-
-          make deploy DOCKERHUB_USERNAME=$REGISTRY_USERNAME OAUTH_CLIENT_ID=${{ secrets.OAUTH_CLIENT_ID }}
+          DOCKERHUB_USERNAME=$REGISTRY_USERNAME OAUTH_CLIENT_ID=${{ secrets.OAUTH_CLIENT_ID }} make deploy
