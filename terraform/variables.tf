@@ -9,6 +9,10 @@ variable "aws_region" {
 }
 
 ### ATLAS
+variable "db_name" {
+    type = string
+}
+
 variable "atlas_project_id" {
     type = string
 }
