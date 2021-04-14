@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Check the health of the web service every thirty-seconds
 # for up to ten minutes, until it responds with HTTP status 200.
 
