@@ -42,7 +42,7 @@ jobs:
         uses: docker/login-action@v1
         with:
           registry: registry.heroku.com
-          username: $REGISTRY_USERNAME
+          username: ${{ secrets.HEROKU_EMAIL }}
           password: $HEROKU_TOKEN
 
       - name: Setup gcloud CLI
@@ -60,8 +60,13 @@ jobs:
       # Push the Docker image to DockerHub
       - name: Publish
         run: |-
-          make push
+          DOCKERHUB_USERNAME=$REGISTRY_USERNAME make push
+
+      - name: Publish to Heroku
+        run: |-
+          make heroku-push
 
       - name: Deploy
         run: |-
-          DOCKERHUB_USERNAME=$REGISTRY_USERNAME OAUTH_CLIENT_ID=${{ secrets.OAUTH_CLIENT_ID }} make deploy
+          export HEROKU_API_KEY=$HEROKU_TOKEN
+          make deploy
