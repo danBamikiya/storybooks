@@ -10,7 +10,6 @@ terraform {
 
     required_providers {
         secrethub = {
-            source = "secrethub/secrethub"
             version = ">= 1.2.0"
         }
 
@@ -23,7 +22,6 @@ terraform {
         }
 
         aws = {
-            source  = "hashicorp/aws"
             version = "~> 3.27"
         }
     }
