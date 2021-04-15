@@ -107,5 +107,5 @@ deploy: check-app-name
 					"docker_image": "'$(docker inspect $(HEROKU_REMOTE_TAG) --format={{.Id}})'"
 				}
 			]
-		}'
-	@sh -c "./scripts/health-check https://$(APP_NAME).herokuapp.com/"
+		}' && \
+		@sh -c "./scripts/health-check https://$(APP_NAME).herokuapp.com/"
