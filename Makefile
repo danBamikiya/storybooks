@@ -51,7 +51,6 @@ terraform-action: check-env
 
 ###
 
-OAUTH_CLIENT_ID=630937217477-dc6vd2bcovn4siq1cqk9dfu38h3tahp2.apps.googleusercontent.com
 
 GITHUB_SHA?=latest
 APP_NAME=
@@ -72,7 +71,6 @@ endif
 
 HEROKU_REMOTE_TAG=registry.heroku.com/$(APP_NAME)
 
-DB_NAME=storybooks
 
 build:
 	docker build -t $(LOCAL_TAG) .
