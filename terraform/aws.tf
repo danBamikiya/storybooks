@@ -4,7 +4,7 @@ provider "aws" {
 
 # Create S3 bucket
 resource "aws_s3_bucket" "terraform_state" {
-  bucket = var.app_name
+  bucket = var.bucket_name
   acl    = "private"
   # Enable versioning so we can see the full revision history of our state files
   versioning {
@@ -21,7 +21,7 @@ resource "aws_s3_bucket" "terraform_state" {
 }
 
 resource "aws_dynamodb_table" "terraform_locks" {
-  name         = var.app_name
+  name         = var.bucket_name
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "LockID"
 
