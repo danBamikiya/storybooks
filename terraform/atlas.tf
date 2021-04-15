@@ -1,11 +1,11 @@
 provider "mongodbatlas" {
-  public_key  = data.secrethub_secret.mongodbatlas_public_key.value
-  private_key = data.secrethub_secret.mongodbatlas_private_key.value
+  public_key  = data.secrethub_secret.MONGODBATLAS_PUBLIC_KEY.value
+  private_key = data.secrethub_secret.MONGODBATLAS_PRIVATE_KEY.value
 }
 
 # cluster
 resource "mongodbatlas_cluster" "mongo" {
-  project_id = data.secrethub_secret.atlas_project_id.value
+  project_id = data.secrethub_secret.ATLAS_PROJECT_ID.value
   name       = "${var.app_name}-${terraform.workspace}"
   num_shards = 1
 
@@ -24,8 +24,8 @@ resource "mongodbatlas_cluster" "mongo" {
 # db user
 resource "mongodbatlas_database_user" "mongo_user" {
   username           = "storybooks-user-${terraform.workspace}"
-  password           = secrethub_secret.atlas_user_password_${terraform.workspace}.value
-  project_id         = data.secrethub_secret.atlas_project_id.value
+  password           = secrethub_secret.ATLAS_USER_PASSWORD_${terraform.workspace}.value
+  project_id         = data.secrethub_secret.ATLAS_PROJECT_ID.value
   auth_database_name = "admin"
 
   roles {
@@ -36,6 +36,6 @@ resource "mongodbatlas_database_user" "mongo_user" {
 
 # ip accesslist
 resource "mongodbatlas_project_ip_access_list" "mongo_user" {
-  project_id = data.secrethub_secret.atlas_project_id.value
+  project_id = data.secrethub_secret.ATLAS_PROJECT_ID.value
   ip_address = "0.0.0.0"
 }
