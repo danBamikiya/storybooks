@@ -1,4 +1,9 @@
 node_modules
-*key.json
+terraform
 *.tfstate
 config/config.env.*
+scripts
+Makefile
+.gitignore
+.prettierrc
+.github
