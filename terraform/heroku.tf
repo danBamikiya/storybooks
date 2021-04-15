@@ -17,10 +17,10 @@ resource "heroku_config" "secrets" {
   }
 
   sensitive_vars = {
-    EXPRESS_SESSION_SECRET = "data.secrethub_secret.express_session_secret.value"
-    GOOGLE_CLIENT_SECRET = data.secrethub_secret.oauth_client_secret.value
-    GOOGLE_CLIENT_ID = data.secrethub_secret.oauth_client_id.value
-    MONGO_URI = "mongodb+srv://storybooks-user-$(terraform.workspace):$(secrethub_secret.atlas_user_password_$(terraform.workspace).value)@storybooks-$(terraform.workspace).cwmqs.mongodb.net/$(var.db_name)?retryWrites=true&w=majority"
+    EXPRESS_SESSION_SECRET = "data.secrethub_secret.EXPRESS_SESSION_SECRET.value"
+    GOOGLE_CLIENT_SECRET = data.secrethub_secret.OAUTH_CLIENT_SECRET.value
+    GOOGLE_CLIENT_ID = data.secrethub_secret.OAUTH_CLIENT_ID.value
+    MONGO_URI = "mongodb+srv://storybooks-user-${terraform.workspace}:${secrethub_secret.ATLAS_USER_PASSWORD_${terraform.workspace}.value}@storybooks-${terraform.workspace}.cwmqs.mongodb.net/${var.db_name}?retryWrites=true&w=majority"
   }
 }
 
