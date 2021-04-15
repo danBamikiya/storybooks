@@ -1,27 +1,31 @@
 terraform {
     backend "s3" {
-        bucket = "storiesswipe-terraform"
-        key = "/state/${terraform.workspace}/storybooks"
-        region = var.aws_region
+        bucket = "storybooks-terraform"
+        key = "state/storybooks"
+        region = "us-east-1"
 
-        dynamodb_table = "storiesswipe-terraform"
+        dynamodb_table = "storybooks-terraform"
         encrypt        = true
     }
 
     required_providers {
         secrethub = {
+            source = "secrethub/secrethub"
             version = ">= 1.2.0"
         }
 
         heroku = {
+            source = "heroku/heroku"
             version = "~> 4"
         }
 
         mongodbatlas = {
+            source = "mongodb/mongodbatlas"
             version = "~> 0.6"
         }
 
         aws = {
+            source = "hashicorp/aws"
             version = "~> 3.27"
         }
     }
