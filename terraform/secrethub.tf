@@ -10,44 +10,44 @@ data "secrethub_secret" "HEROKU_API_KEY" {
 }
 
 ### ATLAS
-resource "secrethub_secret" "atlas_user_password_staging" {
-  path = "danBamikiya/storybooks/atlas_user_password_staging"
+resource "secrethub_secret" "ATLAS_USER_PASSWORD_staging" {
+  path = "danBamikiya/storybooks/ATLAS_USER_PASSWORD_staging"
 
   generate {
     length      = 22
   }
 }
 
-resource "secrethub_secret" "atlas_user_password_prod" {
-  path = "danBamikiya/storybooks/atlas_user_password_prod"
+resource "secrethub_secret" "ATLAS_USER_PASSWORD_prod" {
+  path = "danBamikiya/storybooks/ATLAS_USER_PASSWORD_prod"
 
   generate {
     length      = 22
   }
 }
 
-data "secrethub_secret" "atlas_project_id" {
-  path = "danBamikiya/storybooks/atlas_project_id"
+data "secrethub_secret" "ATLAS_PROJECT_ID" {
+  path = "danBamikiya/storybooks/ATLAS_PROJECT_ID"
 }
 
-data "secrethub_secret" "mongodbatlas_public_key" {
-  path = "danBamikiya/storybooks/mongodbatlas_public_key"
+data "secrethub_secret" "MONGODBATLAS_PUBLIC_KEY" {
+  path = "danBamikiya/storybooks/MONGODBATLAS_PUBLIC_KEY"
 }
 
-data "secrethub_secret" "mongodbatlas_private_key" {
-  path = "danBamikiya/storybooks/mongodbatlas_private_key"
+data "secrethub_secret" "MONGODBATLAS_PRIVATE_KEY" {
+  path = "danBamikiya/storybooks/MONGODBATLAS_PRIVATE_KEY"
 }
 
 ### GOOGLE OAUTH
-data "secrethub_secret" "oauth_client_id" {
-  path = "danBamikiya/storybooks/oauth_client_id"
+data "secrethub_secret" "OAUTH_CLIENT_ID" {
+  path = "danBamikiya/storybooks/OAUTH_CLIENT_ID"
 }
 
-data "secrethub_secret" "oauth_client_secret" {
-  path = "danBamikiya/storybooks/oauth_client_secret"
+data "secrethub_secret" "OAUTH_CLIENT_SECRET" {
+  path = "danBamikiya/storybooks/OAUTH_CLIENT_SECRET"
 }
 
 ### EXPRESS-SESSION
-data "secrethub_secret" "express_session_secret" {
-  path = "danBamikiya/storybooks/express_session_secret"
+data "secrethub_secret" "EXPRESS_SESSION_SECRET" {
+  path = "danBamikiya/storybooks/EXPRESS_SESSION_SECRET"
 }
