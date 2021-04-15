@@ -6,7 +6,7 @@ services:
     entrypoint: ["npm", "run", "dev"]
     env_file: ./config/config.env.development
     ports:
-      - "7070:7070"
+      - 7070:7070
     networks:
       - storybooks-app
     depends_on:
@@ -17,7 +17,7 @@ services:
     environment:
       - MONGO_INITDB_DATABASE=storybooks
     ports:
-      - "27017:27017"
+      - 27017:27017
     networks:
       - storybooks-app
     volumes:
