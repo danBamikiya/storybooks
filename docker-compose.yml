@@ -9,6 +9,9 @@ services:
       - 7070:7070
     networks:
       - storybooks-app
+    volumes:
+      - ./:/app
+      - /app/node_modules
     depends_on:
       - mongo
 
