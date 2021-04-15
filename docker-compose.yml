@@ -2,7 +2,7 @@ version: "3"
 
 services:
   api-server:
-    build: .
+    build: ./
     env_file: ./config/config.env.development
     ports:
       - "7070:7070"
