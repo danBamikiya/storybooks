@@ -17,7 +17,7 @@ resource "heroku_config" "secrets" {
   }
 
   sensitive_vars = {
-    EXPRESS_SESSION_SECRET = "data.secrethub_secret.EXPRESS_SESSION_SECRET.value"
+    EXPRESS_SESSION_SECRET = data.secrethub_secret.EXPRESS_SESSION_SECRET.value
     GOOGLE_CLIENT_SECRET = data.secrethub_secret.OAUTH_CLIENT_SECRET.value
     GOOGLE_CLIENT_ID = data.secrethub_secret.OAUTH_CLIENT_ID.value
     MONGO_URI = "mongodb+srv://storybooks-user-${terraform.workspace}:${secrethub_secret.ATLAS_USER_PASSWORD.value}@storybooks.cwmqs.mongodb.net/${var.db_name}?retryWrites=true&w=majority"
