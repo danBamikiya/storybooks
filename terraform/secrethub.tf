@@ -10,16 +10,8 @@ data "secrethub_secret" "HEROKU_API_KEY" {
 }
 
 ### ATLAS
-resource "secrethub_secret" "ATLAS_USER_PASSWORD_staging" {
-  path = "danBamikiya/storybooks/ATLAS_USER_PASSWORD_staging"
-
-  generate {
-    length      = 22
-  }
-}
-
-resource "secrethub_secret" "ATLAS_USER_PASSWORD_prod" {
-  path = "danBamikiya/storybooks/ATLAS_USER_PASSWORD_prod"
+resource "secrethub_secret" "ATLAS_USER_PASSWORD" {
+  path = "danBamikiya/storybooks/ATLAS_USER_PASSWORD"
 
   generate {
     length      = 22
