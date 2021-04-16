@@ -90,6 +90,8 @@ heroku-push: check-env set-app-name
 	echo "pushing new image to heroku..."
 	docker push $(HEROKU_REMOTE_TAG)
 
+IMAGE_ID=`docker inspect $(HEROKU_REMOTE_TAG) --format={{.Id}}`
+
 deploy: check-app-name
 	echo "releasing new image..."
 	curl --fail \
@@ -101,15 +103,8 @@ deploy: check-app-name
 			"updates": [
 				{
 					"type": "web",
-					"docker_image": "'$(docker inspect $(HEROKU_REMOTE_TAG) --format={{.Id}})'"
+					"docker_image": "$(IMAGE_ID)"
 				}
 			]
 		}' && \
 		@sh -c "./scripts/health-check https://$(APP_NAME).herokuapp.com/"
-
-node_image=node:14.15.5
-PREV_IMAGE=`docker images --filter "before=$(node_image)" -q`
-IMAGE=`docker inspect $(PREV_IMAGE) --format={{.Id}}`
-
-image-clean-test:
-	@echo image is $(IMAGE)
