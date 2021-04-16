@@ -5,9 +5,9 @@ provider "heroku" {
 
 # Create a new Heroku app
 resource "heroku_app" "default" {
-  name   = terraform.workspace == "staging" ? "${var.app_name}-${terraform.workspace}" : var.app_name
-  region = "us"
-  stack  = "container"
+    name   = "storybooks${terraform.workspace == "prod" ? "" : "-${terraform.workspace}"}"
+    region = "us"
+    stack  = "container"
 }
 
 # Define variables
@@ -20,7 +20,7 @@ resource "heroku_config" "secrets" {
     EXPRESS_SESSION_SECRET = "data.secrethub_secret.EXPRESS_SESSION_SECRET.value"
     GOOGLE_CLIENT_SECRET = data.secrethub_secret.OAUTH_CLIENT_SECRET.value
     GOOGLE_CLIENT_ID = data.secrethub_secret.OAUTH_CLIENT_ID.value
-    MONGO_URI = "mongodb+srv://storybooks-user-${terraform.workspace}:${secrethub_secret.ATLAS_USER_PASSWORD_${terraform.workspace}.value}@storybooks-${terraform.workspace}.cwmqs.mongodb.net/${var.db_name}?retryWrites=true&w=majority"
+    MONGO_URI = "mongodb+srv://storybooks-user-${terraform.workspace}:${secrethub_secret.ATLAS_USER_PASSWORD.value}@storybooks.cwmqs.mongodb.net/${var.db_name}?retryWrites=true&w=majority"
   }
 }
 
