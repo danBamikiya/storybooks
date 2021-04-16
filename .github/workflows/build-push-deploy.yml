@@ -45,13 +45,6 @@ jobs:
           username: ${{ secrets.HEROKU_EMAIL }}
           password: $HEROKU_TOKEN
 
-      - name: Setup gcloud CLI
-        uses: google-github-actions/setup-gcloud@master
-        with:
-          project_id: ${{ env.PROJECT_ID}}
-          service_account_key: ${{ secrets.GCP_SA_KEY }}
-          export_default_credentials: true
-
       # Build the Docker image
       - name: Build
         run: |-
