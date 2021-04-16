@@ -56,6 +56,7 @@ GITHUB_SHA?=latest
 APP_NAME=
 LOCAL_TAG=storybooks-app:$(GITHUB_SHA)
 REMOTE_TAG=$(DOCKERHUB_USERNAME)/$(LOCAL_TAG)
+HEROKU_REMOTE_TAG=registry.heroku.com/$(LOCAL_TAG)
 
 set-app-name:
 ifdef ENV=staging
@@ -69,11 +70,9 @@ ifndef APP_NAME
 	$(error Please set APP_NAME)
 endif
 
-HEROKU_REMOTE_TAG=registry.heroku.com/$(APP_NAME)
-
 
 build:
-	docker build -t $(LOCAL_TAG) .
+	docker build --rm -t $(LOCAL_TAG) .
 
 push:
 	echo "tagging docker image..."
@@ -85,7 +84,7 @@ heroku-push: check-env set-app-name
 	echo "pulling new container image..."
 	docker pull $(REMOTE_TAG)
 	echo "removing old container image"
-	-docker rmi $(docker inspect $(HEROKU_REMOTE_TAG) --format={{.Id}})
+	-docker rmi $(HEROKU_REMOTE_TAG)
 	echo "tagging new image..."
 	docker tag $(REMOTE_TAG) $(HEROKU_REMOTE_TAG)
 	echo "pushing new image to heroku..."
@@ -107,3 +106,10 @@ deploy: check-app-name
 			]
 		}' && \
 		@sh -c "./scripts/health-check https://$(APP_NAME).herokuapp.com/"
+
+node_image=node:14.15.5
+PREV_IMAGE=`docker images --filter "before=$(node_image)" -q`
+IMAGE=`docker inspect $(PREV_IMAGE) --format={{.Id}}`
+
+image-clean-test:
+	@echo image is $(IMAGE)
