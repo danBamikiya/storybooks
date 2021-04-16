@@ -4,21 +4,9 @@ provider "mongodbatlas" {
 }
 
 # cluster
-resource "mongodbatlas_cluster" "mongo" {
-  project_id = data.secrethub_secret.ATLAS_PROJECT_ID.value
-  name       = "${var.app_name}-${terraform.workspace}"
-  num_shards = 1
-
-  replication_factor              = 3
-  provider_backup_enabled         = true
-  auto_scaling_disk_gb_enabled    = true
-  mongo_db_major_version          = "3.6"
-
-  //Provider Settings "block"
-  provider_name                   = "AWS"
-  disk_size_gb                    = 10
-  provider_instance_size_name     = "M10"
-  provider_region_name            = "US_EAST_1"
+data "mongodbatlas_cluster" "mongo" {
+    project_id = data.secrethub_secret.ATLAS_PROJECT_ID.value
+    name       = var.app_name
 }
 
 # db user
