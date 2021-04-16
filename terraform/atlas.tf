@@ -25,5 +25,5 @@ resource "mongodbatlas_database_user" "mongo_user" {
 # ip accesslist
 resource "mongodbatlas_project_ip_access_list" "mongo_user" {
   project_id = data.secrethub_secret.ATLAS_PROJECT_ID.value
-  ip_address = "0.0.0.0"
+  cidr_block = "0.0.0.0/0"
 }
