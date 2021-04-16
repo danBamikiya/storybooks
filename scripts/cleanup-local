@@ -1,0 +1,8 @@
+PREV_IMAGE=`docker images --filter "before=${prev_image}"`
+
+cleanup_local() {
+    docker rmi PREV_IMAGE || true
+    docker images -qf dangling=true | xargs -r docker rmi || true
+}
+
+cleanup_registry() {}
