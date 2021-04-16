@@ -24,7 +24,7 @@ resource "mongodbatlas_cluster" "mongo" {
 # db user
 resource "mongodbatlas_database_user" "mongo_user" {
   username           = "storybooks-user-${terraform.workspace}"
-  password           = secrethub_secret.ATLAS_USER_PASSWORD_${terraform.workspace}.value
+  password           = secrethub_secret.ATLAS_USER_PASSWORD.value
   project_id         = data.secrethub_secret.ATLAS_PROJECT_ID.value
   auth_database_name = "admin"
 
