@@ -4,9 +4,9 @@ provider "mongodbatlas" {
 }
 
 # cluster
-data "mongodbatlas_cluster" "mongo" {
-    project_id = data.secrethub_secret.ATLAS_PROJECT_ID.value
-    name       = var.app_name
+data "mongodbatlas_cluster" "mongo_user" {
+  project_id = data.secrethub_secret.ATLAS_PROJECT_ID.value
+  name       = var.app_name
 }
 
 # db user
