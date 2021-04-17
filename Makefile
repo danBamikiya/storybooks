@@ -58,13 +58,6 @@ LOCAL_TAG=storybooks-app:$(GITHUB_SHA)
 REMOTE_TAG=$(DOCKERHUB_USERNAME)/$(LOCAL_TAG)
 HEROKU_REMOTE_TAG=registry.heroku.com/$(APP_NAME)
 
-set-app-name: check-env
-ifeq "$(ENV)" "staging"
-	APP_NAME=storybooks-staging
-else
-	APP_NAME=storybooks
-endif
-
 check-app-name:
 ifndef APP_NAME
 	$(error Please set APP_NAME)
@@ -80,7 +73,7 @@ push:
 	echo "pushing image to dockerhub..."
 	docker push $(REMOTE_TAG)
 
-heroku-push: set-app-name
+heroku-push: check-app-name
 	echo "pulling new container image..."
 	docker pull $(REMOTE_TAG)
 	echo "removing old container image"
@@ -92,19 +85,15 @@ heroku-push: set-app-name
 
 IMAGE_ID=`docker inspect $(HEROKU_REMOTE_TAG) --format={{.Id}}`
 
-deploy: set-app-name
+run-deploy:
+	$(MAKE) deploy IMAGE_ID=$(IMAGE_ID)
+
+deploy: check-app-name
 	echo "releasing new image..."
 	curl --fail \
-		-X PATCH "https://api.heroku.com/apps/$(APP_NAME)/formation" \
+		-X PATCH https://api.heroku.com/apps/$(APP_NAME)/formation \
 		-H 'Content-Type:application/json' \
 		-H 'Accept:application/vnd.heroku+json; version=3.docker-releases' \
 		-H "Authorization:Bearer $(HEROKU_API_KEY)" \
-		-d '{
-			"updates": [
-				{
-					"type": "web",
-					"docker_image": "$(IMAGE_ID)"
-				}
-			]
-		}' && \
-		@sh -c "./scripts/health-check https://$(APP_NAME).herokuapp.com/"
+		-d '{"updates": [{"type": "web","docker_image": "$(IMAGE_ID)"}]}' && \
+	@sh -c "./scripts/health-check https://$(APP_NAME).herokuapp.com/"
