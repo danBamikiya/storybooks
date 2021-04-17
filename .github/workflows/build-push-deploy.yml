@@ -19,9 +19,11 @@ jobs:
       - name: Set ENV
         run: |-
           if  [ ${GITHUB_REF##*/} = "main"];  then
-            echo  "ENV=staging" >>  $GITHUB_ENV
+            echo  "ENV=staging" >>  $GITHUB_ENV && \
+            echo  "APP_NAME=storybooks-staging" >>  $GITHUB_ENV
           else
-            echo  "ENV=prod"  >>  $GITHUB_ENV
+            echo  "ENV=prod"  >>  $GITHUB_ENV && \
+            echo  "APP_NAME=storybooks"  >>  $GITHUB_ENV
           fi
 
       - name: Checkout
@@ -53,7 +55,7 @@ jobs:
 
       - name: Publish to Heroku
         run: |-
-          make heroku-push
+          DOCKERHUB_USERNAME=$REGISTRY_USERNAME make heroku-push
 
       - name: Deploy
         run: |-
