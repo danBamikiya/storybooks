@@ -80,7 +80,7 @@ push:
 	echo "pushing image to dockerhub..."
 	docker push $(REMOTE_TAG)
 
-heroku-push: set-app-name check-app-name
+heroku-push: set-app-name
 	echo "pulling new container image..."
 	docker pull $(REMOTE_TAG)
 	echo "removing old container image"
@@ -92,7 +92,7 @@ heroku-push: set-app-name check-app-name
 
 IMAGE_ID=`docker inspect $(HEROKU_REMOTE_TAG) --format={{.Id}}`
 
-deploy: set-app-name check-app-name
+deploy: set-app-name
 	echo "releasing new image..."
 	curl --fail \
 		-X PATCH "https://api.heroku.com/apps/$(APP_NAME)/formation" \
