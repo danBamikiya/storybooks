@@ -1,4 +1,4 @@
-PROJECT_ID=storiesswipe
+PROJECT_ID=storybooks
 CONTAINER_NAME=storybooks-api
 
 run-local:
@@ -56,10 +56,10 @@ GITHUB_SHA?=latest
 APP_NAME=
 LOCAL_TAG=storybooks-app:$(GITHUB_SHA)
 REMOTE_TAG=$(DOCKERHUB_USERNAME)/$(LOCAL_TAG)
-HEROKU_REMOTE_TAG=registry.heroku.com/$(LOCAL_TAG)
+HEROKU_REMOTE_TAG=registry.heroku.com/$(APP_NAME)
 
-set-app-name:
-ifdef ENV=staging
+set-app-name: check-env
+ifeq "$(ENV)" "staging"
 	APP_NAME=storybooks-staging
 else
 	APP_NAME=storybooks
@@ -80,7 +80,7 @@ push:
 	echo "pushing image to dockerhub..."
 	docker push $(REMOTE_TAG)
 
-heroku-push: check-env set-app-name
+heroku-push: set-app-name check-app-name
 	echo "pulling new container image..."
 	docker pull $(REMOTE_TAG)
 	echo "removing old container image"
@@ -92,7 +92,7 @@ heroku-push: check-env set-app-name
 
 IMAGE_ID=`docker inspect $(HEROKU_REMOTE_TAG) --format={{.Id}}`
 
-deploy: check-app-name
+deploy: set-app-name check-app-name
 	echo "releasing new image..."
 	curl --fail \
 		-X PATCH "https://api.heroku.com/apps/$(APP_NAME)/formation" \
