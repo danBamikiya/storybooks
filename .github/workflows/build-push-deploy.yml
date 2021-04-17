@@ -60,4 +60,4 @@ jobs:
       - name: Deploy
         run: |-
           export HEROKU_API_KEY=$HEROKU_TOKEN
-          make deploy
+          make run-deploy
