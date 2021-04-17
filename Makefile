@@ -75,10 +75,8 @@ heroku-push: check-app-name
 	echo "pushing new image to heroku..."
 	docker push $(HEROKU_REMOTE_TAG)
 
-IMAGE_ID=`docker inspect $(HEROKU_REMOTE_TAG) --format={{.Id}}`
 
-run-deploy:
-	$(MAKE) deploy IMAGE_ID=$(IMAGE_ID)
+IMAGE_ID=`docker inspect $(HEROKU_REMOTE_TAG) --format={{.Id}}`
 
 deploy: check-app-name
 	echo "releasing new image..."
@@ -89,3 +87,6 @@ deploy: check-app-name
 		-H "Authorization:Bearer $(HEROKU_API_KEY)" \
 		-d '{"updates": [{"type": "web","docker_image": "$(IMAGE_ID)"}]}' && \
 	@sh -c "./scripts/health-check https://$(APP_NAME).herokuapp.com/"
+
+run-deploy:
+	$(MAKE) deploy IMAGE_ID=$(IMAGE_ID)
