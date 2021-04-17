@@ -1,5 +1,5 @@
 PREV_IMAGE=`docker images --filter=reference='storybooks-app:*' "before=${LOCAL_TAG}" --format "{{.Repository}}:{{.Tag}}"`
-PREV_DOCKER_IMAGE_TAGS=`docker images --filter=reference='$(DOCKERHUB_USERNAME)/storybooks-app:*' "before=${REMOTE_TAG}" --format "{{.Repository}}:{{.Tag}}"`
+PREV_DOCKER_IMAGE_TAGS=`docker images --filter=reference='${DOCKERHUB_USERNAME}/storybooks-app:*' "before=${REMOTE_TAG}" --format "{{.Repository}}:{{.Tag}}"`
 
 cleanup_local() {
     docker rmi PREV_IMAGE || true
