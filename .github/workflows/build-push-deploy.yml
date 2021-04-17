@@ -61,3 +61,7 @@ jobs:
         run: |-
           export HEROKU_API_KEY=$HEROKU_TOKEN
           make run-deploy
+
+      - name: Check App Health
+        run: |-
+          make check-app-health
