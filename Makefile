@@ -14,22 +14,14 @@ stop-local:
 
 ###
 
-# create-tf-backend-bucket:
-# 	aws s3 mb s3://$(PROJECT_ID)-terraform --region us-east-1
-
-###
 
 ENV?=staging
-
-###
 
 check-env:
 ifndef ENV
 	$(error Please set ENV=[staging|prod])
 endif
 
-set-gh-secret:
-	gh secret set $(1)
 
 ###
 
