@@ -7,9 +7,6 @@ on:
     tags:
       - v\d+\.\d+\d+
 
-env:
-  PROJECT_ID: storiesswipe
-
 jobs:
   setup-build-publish-deploy:
     name: Setup, Build, Publish and Deploy
