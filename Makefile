@@ -85,8 +85,10 @@ deploy: check-app-name
 		-H 'Content-Type:application/json' \
 		-H 'Accept:application/vnd.heroku+json; version=3.docker-releases' \
 		-H "Authorization:Bearer $(HEROKU_API_KEY)" \
-		-d '{"updates": [{"type": "web","docker_image": "$(IMAGE_ID)"}]}' && \
-	@sh -c "./scripts/health-check https://$(APP_NAME).herokuapp.com/"
+		-d '{"updates": [{"type": "web","docker_image": "$(IMAGE_ID)"}]}'
 
 run-deploy:
 	$(MAKE) deploy IMAGE_ID=$(IMAGE_ID)
+
+check-app-health: check-app-name
+	@sh -c "./scripts/health-check https://$(APP_NAME).herokuapp.com/"
