@@ -47,8 +47,7 @@ jobs:
         run: |-
           make build
 
-      # Push the Docker image to DockerHub
-      - name: Publish
+      - name: Publish to DockerHub
         run: |-
           DOCKERHUB_USERNAME=$REGISTRY_USERNAME make push
 
