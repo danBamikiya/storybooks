@@ -91,4 +91,5 @@ run-deploy: check-app-name
 	@$(MAKE) deploy IMAGE_ID=$(IMAGE_ID)
 
 check-app-health: check-app-name
+	chmod u+r+x ./scripts/health-check
 	@sh -c "./scripts/health-check https://$(APP_NAME).herokuapp.com/"
