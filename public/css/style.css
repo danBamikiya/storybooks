@@ -1,14 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght&display=swap");
-
 :root {
-  --bg-primary: #0b0e11;
+  --bg-dark-100: #040d21;
+  --bg-dark-200: #151a21;
+  --bg-dark-300: #0b0e11;
   --color-blue-light: #a2facf;
   --color-blue: #64acff;
   --color-blue-dark: #8193b2;
+  --color-red-100: #ef5350;
 }
 
 body {
-  background-color: var(--bg-primary);
+  background-color: var(--bg-dark-300);
   color: white;
 }
 
@@ -37,9 +38,20 @@ p {
 }
 
 .login-container {
-  width: 400px;
   margin-top: 50px;
   text-align: center;
+}
+
+.login-card {
+  background-color: var(--bg-dark-100);
+}
+
+.btn-login {
+  border-radius: 5px;
+}
+
+.btn-login:hover {
+  background-color: var(--color-red-100) !important;
 }
 
 .fa-small {
