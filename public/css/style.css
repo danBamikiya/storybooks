@@ -2,7 +2,7 @@
   --bg-dark-100: #040d21;
   --bg-dark-200: #151a21;
   --bg-dark-300: #0b0e11;
-  --color-blue-light: #a2facf;
+  --color-green-light: #a2facf;
   --color-blue: #64acff;
   --color-blue-dark: #8193b2;
   --color-red-100: #ef5350;
@@ -16,7 +16,7 @@ body {
 .app-name {
   background: -webkit-linear-gradient(
     -70deg,
-    var(--color-blue-light),
+    var(--color-green-light),
     var(--color-blue)
   );
   background-clip: content-box;
@@ -52,6 +52,10 @@ p {
 
 .btn-login:hover {
   background-color: var(--color-red-100) !important;
+}
+
+.nav-header {
+  background-color: var(--bg-dark-200);
 }
 
 .fa-small {
