@@ -1,4 +1,5 @@
 :root {
+  --bg-dark-000: #323d4d;
   --bg-dark-100: #30363d;
   --bg-dark-200: #151a21;
   --bg-dark-300: #0d1117;
@@ -109,6 +110,10 @@ p.no-stories {
 
 .user-input {
   color: white;
+}
+
+.striped > tbody > tr {
+  background-color: var(--bg-dark-200);
 }
 
 .striped > tbody > tr > td > a {
