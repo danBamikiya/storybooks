@@ -1,4 +1,3 @@
-PROJECT_ID=storybooks
 CONTAINER_NAME=storybooks-api
 
 run-local:
