@@ -1,7 +1,7 @@
 data "aws_caller_identity" "current" {}
 
 resource "aws_iam_policy" "s3_policy" {
-    name        = "terraform-state-s3-access"
+    name        = "terraform-state-s3-access${terraform.workspace == "prod" ? "-prod" : ""}"
     path        = "/"
     description = "Access to the terraform state bucket"
     policy      = <<EOF
