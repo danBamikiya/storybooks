@@ -8,9 +8,10 @@ run-local:
 teardown-local:
 	docker-compose down -v
 
+RM=
 stop-local:
 	docker container stop $(CONTAINER_NAME)
-	docker container rm $(CONTAINER_NAME)
+	$(if $(RM),docker container rm $(CONTAINER_NAME))
 
 ###
 
