@@ -24,7 +24,7 @@ EOF
 }
 
 resource "aws_iam_policy" "dynamodb_policy" {
-    name        = "terraform-state-dynamodb-access"
+    name        = "terraform-state-dynamodb-access${terraform.workspace == "prod" ? "-prod" : ""}"
     path        = "/"
     description = "Access to the terraform state lock"
     policy      = <<EOF
