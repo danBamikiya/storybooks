@@ -84,8 +84,27 @@ p {
   text-align: center;
   padding-bottom: 11px;
   border-radius: 5px;
+  margin-top: 4rem;
+  padding-top: 2rem;
 }
 
 .user > h3 {
   font-size: 2rem;
+}
+
+.user > h1 {
+  margin-top: 0;
+}
+
+p.no-stories {
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+.input-field * {
+  color: grey;
+}
+
+.user-input {
+  color: white;
 }
