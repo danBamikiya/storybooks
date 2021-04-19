@@ -12,7 +12,7 @@ body {
   color: white;
 }
 
-app-name {
+.app-name {
   background: -webkit-linear-gradient(
     -70deg,
     var(--color-blue-light),
@@ -26,7 +26,7 @@ app-name {
   font-weight: 900;
 }
 
-app-info {
+.app-info {
   font-weight: 600;
   font-size: 1.1rem;
   color: var(--color-blue-dark);
