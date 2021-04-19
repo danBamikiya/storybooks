@@ -55,7 +55,7 @@ jobs:
 
       - name: Publish to Heroku
         run: |-
-          make heroku-push DOCKERHUB_USERNAME=${{ env.REGISTRY_USERNAME }}
+          make heroku-push DOCKERHUB_USERNAME=${{ env.REGISTRY_USERNAME }} APP_MAKE=${{ env.APP_NAME }}
 
       - name: Deploy
         run: |-
