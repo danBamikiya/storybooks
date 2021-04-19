@@ -87,7 +87,7 @@ deploy: check-app-name
 		-H "Authorization:Bearer $(HEROKU_API_KEY)" \
 		-d '{"updates": [{"type": "web","docker_image": "$(IMAGE_ID)"}]}'
 
-run-deploy:
+run-deploy: check-app-name
 	@$(MAKE) deploy IMAGE_ID=$(IMAGE_ID)
 
 check-app-health: check-app-name
