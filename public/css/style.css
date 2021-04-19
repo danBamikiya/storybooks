@@ -1,3 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght&display=swap");
+
+:root {
+  --bg-primary: #0b0e11;
+  --color-blue-light: #a2facf;
+  --color-blue: #64acff;
+  --color-blue-dark: #8193b2;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: white;
+}
+
+app-name {
+  background: -webkit-linear-gradient(
+    -70deg,
+    var(--color-blue-light),
+    var(--color-blue-light)
+  );
+  background-clip: content-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  font-weight: 900;
+}
+
+app-info {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--color-blue-dark);
+}
+
 p {
   margin: 10px 0 !important;
 }
