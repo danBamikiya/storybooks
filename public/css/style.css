@@ -1,15 +1,14 @@
 :root {
-  --bg-dark-100: #040d21;
-  --bg-dark-200: #151a21;
-  --bg-dark-300: #0b0e11;
+  --bg-dark-100: #151a21;
+  --bg-dark-200: #0b0e11;
   --color-green-light: #a2facf;
   --color-blue: #64acff;
-  --color-blue-dark: #8193b2;
+  --color-blue-dark: #8d9fbe;
   --color-red-100: #ef5350;
 }
 
 body {
-  background-color: var(--bg-dark-300);
+  background-color: var(--bg-dark-200);
   color: white;
 }
 
@@ -46,7 +45,8 @@ p {
   background-color: var(--bg-dark-100);
 }
 
-.btn-login {
+.btn-login,
+.login-card {
   border-radius: 5px;
 }
 
@@ -55,7 +55,7 @@ p {
 }
 
 .nav-header {
-  background-color: var(--bg-dark-200);
+  background-color: var(--bg-dark-100);
 }
 
 .fa-small {
@@ -69,4 +69,23 @@ p {
 
 .img-small {
   width: 180px;
+}
+
+.divider {
+  width: 0;
+}
+
+.dashboard {
+  font-weight: 500;
+}
+
+.user {
+  background-color: var(--bg-dark-100);
+  text-align: center;
+  padding-bottom: 11px;
+  border-radius: 5px;
+}
+
+.user > h3 {
+  font-size: 2rem;
 }
