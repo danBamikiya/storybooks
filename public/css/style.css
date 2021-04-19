@@ -1,6 +1,8 @@
 :root {
-  --bg-dark-100: #151a21;
-  --bg-dark-200: #0b0e11;
+  --bg-dark-100: #30363d;
+  --bg-dark-200: #151a21;
+  --bg-dark-300: #0d1117;
+  --bg-dark-400: #0b0e11;
   --color-green-light: #a2facf;
   --color-blue: #64acff;
   --color-blue-dark: #8d9fbe;
@@ -8,7 +10,7 @@
 }
 
 body {
-  background-color: var(--bg-dark-200);
+  background-color: var(--bg-dark-400);
   color: white;
 }
 
@@ -42,7 +44,7 @@ p {
 }
 
 .login-card {
-  background-color: var(--bg-dark-100);
+  background-color: var(--bg-dark-200);
 }
 
 .btn-login,
@@ -55,7 +57,7 @@ p {
 }
 
 .nav-header {
-  background-color: var(--bg-dark-100);
+  background-color: var(--bg-dark-200);
 }
 
 .fa-small {
@@ -80,7 +82,7 @@ p {
 }
 
 .user {
-  background-color: var(--bg-dark-100);
+  background-color: var(--bg-dark-200);
   text-align: center;
   padding-bottom: 11px;
   border-radius: 5px;
@@ -111,4 +113,12 @@ p.no-stories {
 
 .striped > tbody > tr > td > a {
   color: white !important;
+}
+
+.striped > tbody > tr > td:nth-child(1) {
+  border-radius: 5px 0px 0px 5px;
+}
+
+.striped > tbody > tr > td:nth-last-child(1) {
+  border-radius: 0px 5px 5px 0px;
 }
