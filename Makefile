@@ -79,7 +79,8 @@ heroku-push: check-app-name
 IMAGE_ID=`docker inspect $(HEROKU_REMOTE_TAG) --format={{.Id}}`
 
 deploy: check-app-name
-	curl --fail \
+	echo "releasing new image..."
+	@curl --write-out '%{http_code}' --fail --silent --output /dev/null \
 		-X PATCH https://api.heroku.com/apps/$(APP_NAME)/formation \
 		-H 'Content-Type:application/json' \
 		-H 'Accept:application/vnd.heroku+json; version=3.docker-releases' \
@@ -87,7 +88,6 @@ deploy: check-app-name
 		-d '{"updates": [{"type": "web","docker_image": "$(IMAGE_ID)"}]}'
 
 run-deploy:
-	echo "releasing new image..."
 	@$(MAKE) deploy IMAGE_ID=$(IMAGE_ID)
 
 check-app-health: check-app-name
