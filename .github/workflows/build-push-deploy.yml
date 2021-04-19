@@ -59,9 +59,8 @@ jobs:
 
       - name: Deploy
         run: |-
-          export HEROKU_API_KEY=${{ env.HEROKU_TOKEN }}
-          make run-deploy
+          make run-deploy  HEROKU_API_KEY=${{ env.HEROKU_TOKEN }}  APP_NAME=${{ env.APP_NAME }}
 
       - name: Check App Health
         run: |-
-          make check-app-health
+          make check-app-health  APP_NAME=${{ env.APP_NAME }}
