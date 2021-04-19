@@ -2,8 +2,8 @@ name: CI to Build and Deploy to Heroku
 
 on:
   push:
-    # branches:
-    #   - main
+    branches:
+      - main
     tags:
       - v\d+\.\d+\d+
 
@@ -19,10 +19,10 @@ jobs:
       - name: Set ENV
         run: |-
           if  [ ${GITHUB_REF##*/} = "main"];  then
-            echo  "ENV=staging" >>  $GITHUB_ENV && \
+            echo  "ENV=staging" >>  $GITHUB_ENV
             echo  "APP_NAME=storybooks-staging" >>  $GITHUB_ENV
           else
-            echo  "ENV=prod"  >>  $GITHUB_ENV && \
+            echo  "ENV=prod"  >>  $GITHUB_ENV
             echo  "APP_NAME=storybooks"  >>  $GITHUB_ENV
           fi
 
