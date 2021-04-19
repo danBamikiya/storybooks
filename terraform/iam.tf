@@ -42,7 +42,7 @@ EOF
 }
 
 resource "aws_iam_user" "user" {
-    name = "storybooks"
+    name = "storybooks${terraform.workspace == "prod" ? "-app" : ""}"
 }
 
 resource "aws_iam_user_policy_attachment" "attach_s3_policy" {
