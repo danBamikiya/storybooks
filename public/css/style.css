@@ -4,8 +4,8 @@
   --bg-dark-300: #0d1117;
   --bg-dark-400: #0b0e11;
   --color-green-light: #a2facf;
-  --color-blue: #64acff;
-  --color-blue-dark: #8d9fbe;
+  --color-blue-primary: #64acff;
+  --color-blue-secondary: #8d9fbe;
   --color-red-100: #ef5350;
 }
 
@@ -18,7 +18,7 @@ body {
   background: -webkit-linear-gradient(
     -70deg,
     var(--color-green-light),
-    var(--color-blue)
+    var(--color-blue-primary)
   );
   background-clip: content-box;
   -webkit-background-clip: text;
@@ -31,7 +31,7 @@ body {
 .app-info {
   font-weight: 600;
   font-size: 1.1rem;
-  color: var(--color-blue-dark);
+  color: var(--color-blue-secondary);
 }
 
 p {
@@ -121,4 +121,18 @@ p.no-stories {
 
 .striped > tbody > tr > td:nth-last-child(1) {
   border-radius: 0px 5px 5px 0px;
+}
+
+.user-card {
+  background-color: var(--bg-dark-300);
+  border-radius: 6px;
+  border: 1px solid var(--bg-dark-100);
+}
+
+.user-card-name {
+  color: var(--color-blue-secondary);
+}
+
+.user-card-stories {
+  border: 1px solid var(--bg-dark-100);
 }
