@@ -108,3 +108,7 @@ p.no-stories {
 .user-input {
   color: white;
 }
+
+.striped > tbody > tr > td > a {
+  color: white !important;
+}
