@@ -25,37 +25,43 @@ jobs:
             echo  "ENV=prod"  >>  $GITHUB_ENV
             echo  "APP_NAME=storybooks"  >>  $GITHUB_ENV
           fi
-      - name: test ENV
-        run: |-
-          echo ${GITHUB_REF}
-          echo ${GITHUB_REF##*/}
+
       - name: Checkout
         uses: actions/checkout@v2
+
       ### Push to multi-registries
+
       - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
           username: ${{ env.REGISTRY_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
       - name: Login to Heroku Registry
         uses: docker/login-action@v1
         with:
           registry: registry.heroku.com
           username: ${{ secrets.HEROKU_EMAIL }}
           password: ${{ env.HEROKU_TOKEN }}
+
       # Build the Docker image
       - name: Build
         run: |-
           make build
+
       - name: Publish to DockerHub
         run: |-
-          DOCKERHUB_USERNAME=${{ env.REGISTRY_USERNAME }} make push
+          make push DOCKERHUB_USERNAME=${{ env.REGISTRY_USERNAME }}
+
       - name: Publish to Heroku
         run: |-
-          DOCKERHUB_USERNAME=${{ env.REGISTRY_USERNAME }} APP_NAME=${{ env.APP_NAME }} make heroku-push
+          make heroku-push DOCKERHUB_USERNAME=${{ env.REGISTRY_USERNAME }}
+
       - name: Deploy
         run: |-
-          HEROKU_API_KEY=${{ env.HEROKU_TOKEN }} APP_NAME=${{ env.APP_NAME }} make run-deploy
+          export HEROKU_API_KEY=${{ env.HEROKU_TOKEN }}
+          make run-deploy
+
       - name: Check App Health
         run: |-
           make check-app-health
