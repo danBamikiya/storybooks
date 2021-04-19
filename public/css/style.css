@@ -16,7 +16,7 @@ body {
   background: -webkit-linear-gradient(
     -70deg,
     var(--color-blue-light),
-    var(--color-blue-light)
+    var(--color-blue)
   );
   background-clip: content-box;
   -webkit-background-clip: text;
