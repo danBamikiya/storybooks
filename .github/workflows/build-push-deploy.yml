@@ -2,8 +2,8 @@ name: CI to Build and Deploy to Heroku
 
 on:
   push:
-    branches:
-      - main
+    # branches:
+    #   - main
     tags:
       - v\d+\.\d+\d+
 
@@ -34,7 +34,7 @@ jobs:
       - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
-          username: $REGISTRY_USERNAME
+          username: ${{ env.REGISTRY_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Login to Heroku Registry
@@ -42,7 +42,7 @@ jobs:
         with:
           registry: registry.heroku.com
           username: ${{ secrets.HEROKU_EMAIL }}
-          password: $HEROKU_TOKEN
+          password: ${{ env.HEROKU_TOKEN }}
 
       # Build the Docker image
       - name: Build
@@ -51,15 +51,15 @@ jobs:
 
       - name: Publish to DockerHub
         run: |-
-          DOCKERHUB_USERNAME=$REGISTRY_USERNAME make push
+          DOCKERHUB_USERNAME=${{ env.REGISTRY_USERNAME }} make push
 
       - name: Publish to Heroku
         run: |-
-          DOCKERHUB_USERNAME=$REGISTRY_USERNAME make heroku-push
+          DOCKERHUB_USERNAME=${{ env.REGISTRY_USERNAME }} make heroku-push
 
       - name: Deploy
         run: |-
-          export HEROKU_API_KEY=$HEROKU_TOKEN
+          export HEROKU_API_KEY=${{ env.HEROKU_TOKEN }}
           make run-deploy
 
       - name: Check App Health
