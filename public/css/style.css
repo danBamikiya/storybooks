@@ -155,3 +155,7 @@ p.no-stories {
 .user-story-date {
   color: var(--color-dark-100);
 }
+
+.user-story-more:hover {
+  background-color: #607d8b !important;
+}
