@@ -1,9 +1,10 @@
 :root {
   --bg-dark-000: #323d4d;
   --bg-dark-100: #30363d;
-  --bg-dark-200: #151a21;
-  --bg-dark-300: #0d1117;
-  --bg-dark-400: #0b0e11;
+  --bg-dark-200: #242c37;
+  --bg-dark-300: #151a21;
+  --bg-dark-400: #0d1117;
+  --bg-dark-500: #0b0e11;
   --color-green-light: #a2facf;
   --color-blue-primary: #64acff;
   --color-blue-secondary: #8d9fbe;
@@ -11,7 +12,7 @@
 }
 
 body {
-  background-color: var(--bg-dark-400);
+  background-color: var(--bg-dark-500);
   color: white;
 }
 
@@ -45,7 +46,7 @@ p {
 }
 
 .login-card {
-  background-color: var(--bg-dark-200);
+  background-color: var(--bg-dark-300);
 }
 
 .btn-login,
@@ -58,7 +59,7 @@ p {
 }
 
 .nav-header {
-  background-color: var(--bg-dark-200);
+  background-color: var(--bg-dark-300);
 }
 
 .fa-small {
@@ -83,7 +84,7 @@ p {
 }
 
 .user {
-  background-color: var(--bg-dark-200);
+  background-color: var(--bg-dark-300);
   text-align: center;
   padding-bottom: 11px;
   border-radius: 5px;
@@ -113,7 +114,7 @@ p.no-stories {
 }
 
 .striped > tbody > tr {
-  background-color: var(--bg-dark-200);
+  background-color: var(--bg-dark-300);
 }
 
 .striped > tbody > tr > td > a {
@@ -129,15 +130,15 @@ p.no-stories {
 }
 
 .user-card {
-  background-color: var(--bg-dark-300);
+  background-color: var(--bg-dark-400);
   border-radius: 6px;
   border: 1px solid var(--bg-dark-100);
 }
 
-.user-card-name {
+.user-card-title {
   color: var(--color-blue-secondary);
 }
 
-.user-card-stories {
-  border: 1px solid var(--bg-dark-100);
+.user-card-action {
+  border-radius: 0px 0px 6px 6px !important;
 }
