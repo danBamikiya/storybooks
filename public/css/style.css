@@ -126,6 +126,10 @@ p.no-stories {
   border-radius: 5px 0px 0px 5px;
 }
 
+.striped > tbody > tr > td:nth-child(1) > a:hover {
+  color: var(--color-blue-primary) !important;
+}
+
 .striped > tbody > tr > td:nth-last-child(1) {
   border-radius: 0px 5px 5px 0px;
 }
