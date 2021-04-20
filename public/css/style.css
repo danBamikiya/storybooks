@@ -9,6 +9,7 @@
   --color-blue-primary: #64acff;
   --color-blue-secondary: #8d9fbe;
   --color-red-100: #ef5350;
+  --color-dark-100: #5d7290;
 }
 
 body {
@@ -114,7 +115,7 @@ p.no-stories {
 }
 
 .striped > tbody > tr {
-  background-color: var(--bg-dark-300);
+  background-color: var(--bg-dark-200) !important;
 }
 
 .striped > tbody > tr > td > a {
@@ -141,4 +142,12 @@ p.no-stories {
 
 .user-card-action {
   border-radius: 0px 0px 6px 6px !important;
+}
+
+.user-story-card {
+  background-color: var(--bg-dark-300);
+}
+
+.user-story-date {
+  color: var(--color-dark-100);
 }
