@@ -6,6 +6,8 @@ on:
       - main
     tags:
       - v\d+\.\d+\.\d+
+    paths-ignore:
+      - "*.md"
 
 jobs:
   setup-build-publish-deploy:
