@@ -23,7 +23,7 @@ jobs:
             echo  "APP_NAME=storybooks-staging" >>  $GITHUB_ENV
           else
             echo  "ENV=prod"  >>  $GITHUB_ENV
-            echo  "APP_NAME=storyfleets"  >>  $GITHUB_ENV
+            echo  "APP_NAME=storybooks-web-app"  >>  $GITHUB_ENV
           fi
 
       - name: Checkout
