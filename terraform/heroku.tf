@@ -5,7 +5,7 @@ provider "heroku" {
 
 # Create a new Heroku app
 resource "heroku_app" "default" {
-    name   = terraform.workspace == "prod" ? "storyfleets" : "storybooks-${terraform.workspace}"
+    name   = "storybooks${terraform.workspace == "prod" ? "-web-app" : "-${terraform.workspace}"}"
     region = "us"
     stack  = "container"
 }
