@@ -1,7 +1,7 @@
 {
   "name": "storybooks",
   "version": "1.0.0",
-  "description": "a short stories telling app",
+  "description": "a short stories sharing app",
   "main": "app.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production node app",
