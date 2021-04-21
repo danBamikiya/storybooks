@@ -114,6 +114,11 @@ p.no-stories {
   color: white;
 }
 
+.striped {
+  border-collapse: separate !important;
+  border-spacing: 0 1rem !important;
+}
+
 .striped > tbody > tr {
   background-color: var(--bg-dark-200) !important;
 }
