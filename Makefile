@@ -1,4 +1,4 @@
-CONTAINER_NAME=storybooks-api
+CONTAINER_NAME=storybooks-api-server
 
 run-local:
 	docker-compose up -d
