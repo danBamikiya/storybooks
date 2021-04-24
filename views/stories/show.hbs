@@ -5,7 +5,7 @@
         </h3>
         <div class="card story">
             <div class="card-content user-story-card">
-                <span class="card-title user-story-date">{{formatDate date 'MMMM Do YYYY, h:mm:ss a'}}</span>
+                <span class="card-title user-story-date">{{formatDate story.createdAt "MMMM Do YYYY, h:mm:ss a"}}</span>
                 {{{story.body}}}
             </div>
         </div>
