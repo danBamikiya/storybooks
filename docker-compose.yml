@@ -14,6 +14,7 @@ services:
       - /app/node_modules
     depends_on:
       - mongo
+    container_name: storybooks-api-server
 
   mongo:
     image: mongo:3.6-xenial
@@ -25,6 +26,7 @@ services:
       - storybooks-app
     volumes:
       - mongo-data:/data/db
+    container_name: storybooks-mongo-db
 
 networks:
   storybooks-app:
