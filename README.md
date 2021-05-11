@@ -4,7 +4,7 @@
 
 <p align="center">A web app for sharing public stories or use as a private web-based diary!</p>
 
-**<p align="center"><a href="storybooks-web-app.herokuapp.com">storybooks-web-app.herokuapp.com</a></p>**
+**<p align="center"><a href="https://storybooks-web-app.herokuapp.com">storybooks-web-app.herokuapp.com</a></p>**
 
 <p align="center"><img width alt="storybooks-img-preview" src="./public/images/storybooks-web-app-preview.png" width="480"></p>
 
