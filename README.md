@@ -40,12 +40,6 @@ Heroku
 
 Docker
 
-## 😃 About
-
-Dan Bamikiya - [danBamikiya](https://linkedin.com/in/dan-bamikiya/) - [mail@danbamikiya](mailto:danbamikiya@gmail.com)
-
-https://github.com/danBamikiya
-
 ## Development Process
 
 Docker Compose was used to manage the docker containers running both the backend service and the mongodb service locally.
