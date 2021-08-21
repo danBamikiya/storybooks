@@ -22,7 +22,7 @@ The frontend is rendered with Handlebars and fully server rendered. On the backe
 
 #### Frontend
 
-Handlebars Template . CSS . HTML
+Handlebars Template . MaterializeCSS . HTML
 
 #### Backend
 
