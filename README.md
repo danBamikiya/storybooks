@@ -69,9 +69,9 @@ The cloud services used for the running of the app both in staging and productio
 
 ####
 
-An AWS S3 bucket was used for Terraform state management (_with versioning enabled to preserve, retrieve, and restore every version of the state object stored in the bucket_).
+An AWS S3 bucket was provisioned and used for Terraform state management (_with versioning enabled to preserve, retrieve, and restore every version of the state object stored in the bucket_).
 
-An AWS DynamoDB (a NoSQL database) was used for state locking _useful when making multiple concurrent infrastructural changes which could potentially corrupt the state_.
+An AWS DynamoDB (a NoSQL database) was provisioned and used for state locking _useful when making multiple concurrent infrastructural changes which could potentially corrupt the state_.
 
 The CI/CD pipeline uses Github Actions:
 
