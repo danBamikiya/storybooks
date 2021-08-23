@@ -62,18 +62,14 @@ Terraform was used as the Infrastructure as Code tool to provision the cloud ser
 
 ####
 
-The cloud services used for the running of the app both in staging and production are:
-  - Heroku for running and hosting the deployed docker containers
-  - MongoDB Atlas hosting the MongoDB database for data persistence
-  - SecretHub as a secret manager for both services secret codes _including Google OAuth secrets for authentication_.
+The cloud services provisioned and used for the running of the app both in staging and production are:
+  - **Heroku** for running and hosting the deployed docker containers
+  - **MongoDB Atlas** hosting the MongoDB database for data persistence
+  - **SecretHub** as a secret manager for both services secret codes _including Google OAuth secrets for authentication_.
+  - **AWS S3** bucket for Terraform state management (_with versioning enabled to preserve, retrieve, and restore every version of the state object stored in the bucket_).
+  - **AWS DynamoDB** (a NoSQL database) for Terraform state locking _useful when making multiple concurrent infrastructural changes which could potentially corrupt the state_.
 
-####
-
-An AWS S3 bucket was provisioned and used for Terraform state management (_with versioning enabled to preserve, retrieve, and restore every version of the state object stored in the bucket_).
-
-An AWS DynamoDB (a NoSQL database) was provisioned and used for state locking _useful when making multiple concurrent infrastructural changes which could potentially corrupt the state_.
-
-The CI/CD pipeline uses Github Actions:
+The **CI/CD** pipeline uses Github Actions:
 
   -  The staging app delivery is a push based pipeline wherein there are automatic builds of the image, pushes of the image to DockerHub then pulls of that image which is pushed to Heroku registry and releases from the Heroku registry image to the staging environment(app) hosted on Heroku on pushes to the main branch.
 
