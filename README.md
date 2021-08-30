@@ -30,7 +30,7 @@ Express.js . Javascript
 
 #### Authentication
 
-Passport.js for Google Auth
+Passport.js for Google OAuth
 
 #### Database
 
