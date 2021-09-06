@@ -71,6 +71,8 @@ The cloud services provisioned and used for the running of the app both in stagi
 
 The **CI/CD** pipeline uses Github Actions:
 
+Github Actions automatically deploy the server Docker container in both staging and production environments in Heroku
+
   -  The staging app delivery is a push based pipeline wherein there are automatic builds of the image, pushes of the image to DockerHub then pulls of that image which is pushed to Heroku registry and releases from the Heroku registry image to the staging environment(app) hosted on Heroku on pushes to the main branch.
 
   -  The production app delivery pipeline is the same as the staging but its triggered on tags pushes after the staging deploy has been tested. :)
